@@ -20,6 +20,10 @@ See docs/process.md for more on how version tagging works.
 
 3.1.25 (in development)
 -----------------------
+- In non-optimizing builds we emscripten will now place the stack first in
+  memory, before global data.  This is to get more accurate stack overflow
+  errors (since overflow will trap rather currpting global data first).  Most
+  programs should not be effected by this change. (#18154)
 - The `TOTAL_STACK` setting was renamed to `STACK_SIZE`.  The old name will
   continue to work as an alias. (#18128)
 - Exporting `print`/`printErr` via `-sEXPORTED_RUNTIME_METHODS` is deprecated in
